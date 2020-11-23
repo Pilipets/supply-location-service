@@ -15,6 +15,7 @@ import uber.location_service.structures.SupplyInstance;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  * This is the API that exists at the moment due to the chosen implementation model,
@@ -35,19 +36,29 @@ public class SupplyLocationController {
    }
 
    @GetMapping(path="/get-closest")
-   public ResponseEntity<Object> getClosestHandler(
+   public DeferredResult<ResponseEntity<Object>> getClosestHandler(
          GeoPoint geoPoint) {
+      DeferredResult<ResponseEntity<Object>> output = new DeferredResult<>();
 
-      List<SupplyInstance> arr = impl.getClosestSupply(geoPoint);
-      return new ResponseEntity<>(arr, HttpStatus.OK);
+      ForkJoinPool.commonPool().submit(() -> {
+         List<SupplyInstance> arr = impl.getClosestSupply(geoPoint);
+         output.setResult(new ResponseEntity<>(arr, HttpStatus.OK));
+      });
+
+      return output;
    }
 
    @GetMapping(path="/get-closest-in-radius")
-   public ResponseEntity<Object> getClosestInRadiusHandler(
+   public DeferredResult<ResponseEntity<Object>> getClosestInRadiusHandler(
          GeoPoint geoPoint) {
+      DeferredResult<ResponseEntity<Object>> output = new DeferredResult<>();
 
-      List<SupplyInstance> arr = impl.getRadiusSupply(geoPoint);
-      return new ResponseEntity<>(arr, HttpStatus.OK);
+      ForkJoinPool.commonPool().submit(() -> {
+         List<SupplyInstance> arr = impl.getRadiusSupply(geoPoint);
+         output.setResult(new ResponseEntity<>(arr, HttpStatus.OK));
+      });
+
+      return output;
    }
 
    @PostMapping(path="/update-supply")

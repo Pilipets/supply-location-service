@@ -1,31 +1,26 @@
-package uber.location_service.algo.callable;
+package uber.location_service.algo;
 
-import uber.location_service.algo.GeoAlgorithms;
 import uber.location_service.structures.GeoPoint;
 import uber.location_service.structures.SupplyInstance;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class RadiusSupplyCallable implements Callable<List<SupplyInstance>> {
+public class AlgoInterface {
    private final static double earthRadius = 6371.01; //km
    private final static double maxSearchDistance = 200; // km
    private final static double minSearchDistance = 4; // km
 
-
-   private final GeoPoint location;
-   private final ConcurrentHashMap<UUID, SupplyInstance> lhm;
-   public RadiusSupplyCallable(
+   public List<SupplyInstance> getClosestSupply(
          ConcurrentHashMap<UUID, SupplyInstance> lhm, GeoPoint location) {
-      this.lhm = lhm;
-      this.location = location;
+      return GeoAlgorithms.getClosest(
+            lhm.entrySet().iterator(), earthRadius, location);
    }
 
-   @Override
-   public List<SupplyInstance> call() {
+   public List<SupplyInstance> getRadiusSupply(
+         ConcurrentHashMap<UUID, SupplyInstance> lhm, GeoPoint location) {
       List<SupplyInstance> radiusSupplySet = new ArrayList<>();
       double curDistance = minSearchDistance;
 
