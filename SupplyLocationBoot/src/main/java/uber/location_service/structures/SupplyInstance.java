@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class SupplyInstance implements Serializable {
-   protected UUID id;
-   protected GeoPoint location;
+   private UUID id;
+   private GeoPoint location;
 
-   protected SupplyInstance() {
+   public SupplyInstance() {
    }
 
    public UUID getId() {

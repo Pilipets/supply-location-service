@@ -56,25 +56,21 @@ public class GeoAlgorithms {
    public static List<SupplyInstance> getClosest(
          final Iterator<Map.Entry<UUID, SupplyInstance>> iterator, final double radius,
          final GeoPoint location) {
-      double resDistance;
-      SupplyInstance resInstance;
-
-      if (iterator.hasNext()) {
-         resInstance = iterator.next().getValue();
-         resDistance = resInstance.getLocation().distanceTo(location, radius);
-      } else {
-         return null;
-      }
+      double resDistance = Double.MAX_VALUE;
+      SupplyInstance resInstance = null;
 
       while (iterator.hasNext()) {
          SupplyInstance ins = iterator.next().getValue();
-         double dist = ins.getLocation().distanceTo(resInstance.getLocation(), radius);
+         double dist = ins.getLocation().distanceTo(location, radius);
          if (dist < resDistance) {
             resInstance = ins;
             resDistance = dist;
          }
       }
 
+      if (resInstance == null) {
+         return null;
+      }
       return List.of(resInstance);
    }
 
