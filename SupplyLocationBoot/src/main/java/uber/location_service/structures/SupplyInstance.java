@@ -3,7 +3,7 @@ package uber.location_service.structures;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class SupplyInstance implements Serializable {
+public class SupplyInstance {
    private UUID id;
    private GeoPoint location;
 

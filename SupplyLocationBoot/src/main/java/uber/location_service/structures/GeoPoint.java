@@ -2,7 +2,7 @@ package uber.location_service.structures;
 
 import java.io.Serializable;
 
-public class GeoPoint implements Serializable {
+public class GeoPoint {
    private double latitude, longitude; // latitude, longitude in radians
 
    public GeoPoint() {
