@@ -95,10 +95,10 @@ public class GeoAlgorithms {
             if (!(Lat >= b1 && Lat <= b2)) return false;
 
             boolean c1 = Lon >= b3, c2 = Lon <= b4;
-            c1 = meridian180WithinDistance ? c1 | c2 : c1 & c2;
+            c1 = meridian180WithinDistance ? (c1 | c2) : (c1 & c2);
             if (!c1) return false;
 
-            pDistance[0] = p.distanceTo(location, radius);
+            pDistance[0] = location.distanceTo(p, radius);
             return pDistance[0] <= distance;
          }
       };
@@ -115,15 +115,15 @@ public class GeoAlgorithms {
             "SELECT * FROM Places WHERE (Lat >= ? AND Lat <= ?) AND (Lon >= ? " +
                   (meridian180WithinDistance ? "OR" : "AND") + " Lon <= ?) AND " +
                   "acos(sin(?) * sin(Lat) + cos(?) * cos(Lat) * cos(Lon - ?)) <= ?");
-      statement.setDouble(1, boundingCoordinates[0].getLatRadians());
-      statement.setDouble(2, boundingCoordinates[1].getLatRadians());
-      statement.setDouble(3, boundingCoordinates[0].getLonRadians());
-      statement.setDouble(4, boundingCoordinates[1].getLonRadians());
-      statement.setDouble(5, location.getLatRadians());
-      statement.setDouble(6, location.getLatitude());
-      statement.setDouble(7, location.getLonRadians());
-      statement.setDouble(8, distance / radius);
-      return statement.executeQuery();*/
+		statement.setDouble(1, boundingCoordinates[0].getLatitudeInRadians());
+		statement.setDouble(2, boundingCoordinates[1].getLatitudeInRadians());
+		statement.setDouble(3, boundingCoordinates[0].getLongitudeInRadians());
+		statement.setDouble(4, boundingCoordinates[1].getLongitudeInRadians());
+		statement.setDouble(5, location.getLatitudeInRadians());
+		statement.setDouble(6, location.getLatitudeInRadians());
+		statement.setDouble(7, location.getLongitudeInRadians());
+		statement.setDouble(8, distance / radius);
+		return statement.executeQuery();*/
       return res;
    }
 
