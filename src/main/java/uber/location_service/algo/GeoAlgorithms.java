@@ -68,10 +68,8 @@ public class GeoAlgorithms {
          }
       }
 
-      if (resInstance == null) {
-         return null;
-      }
-      return List.of(resInstance);
+      if (resInstance != null) return List.of(resInstance);
+      return new ArrayList<>();
    }
 
    public static List<SupplyInstance> findPlacesWithinDistance(

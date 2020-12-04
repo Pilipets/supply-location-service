@@ -1,17 +1,10 @@
 package uber.location_service.structures;
 
-import java.io.Serializable;
-
 public class GeoPoint {
    private double latitude, longitude; // latitude, longitude in radians
 
    public GeoPoint() {
 
-   }
-
-   public GeoPoint(double latitude, double longitude) {
-      this.latitude = latitude;
-      this.longitude = longitude;
    }
 
    /**
@@ -31,6 +24,16 @@ public class GeoPoint {
 
    public double getLongitude() {
       return longitude;
+   }
+
+   public void transformToRadians() {
+      latitude = Math.toRadians(latitude);
+      longitude = Math.toRadians(longitude);
+   }
+
+   public void transformToDegrees() {
+      latitude = Math.toDegrees(latitude);
+      longitude = Math.toDegrees(longitude);
    }
 
    @Override

@@ -1,17 +1,13 @@
 package uber.location_service.services;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.async.DeferredResult;
 import uber.location_service.algo.AlgoInterface;
-import uber.location_service.algo.GeoAlgorithms;
 import uber.location_service.structures.GeoPoint;
 import uber.location_service.structures.SupplyInstance;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class SupplyLocationImpl {
@@ -29,11 +25,13 @@ public class SupplyLocationImpl {
 
    public List<SupplyInstance> getRadiusSupply(GeoPoint location) {
       List<SupplyInstance> res = algoInterface.getRadiusSupply(lhm, location);
+      for (SupplyInstance ins : res) ins.getLocation().transformToDegrees();
       return res;
    }
 
    public List<SupplyInstance> getClosestSupply(GeoPoint location) {
       List<SupplyInstance> res = algoInterface.getClosestSupply(lhm, location);
+      for (SupplyInstance ins : res) ins.getLocation().transformToDegrees();
       return res;
    }
 

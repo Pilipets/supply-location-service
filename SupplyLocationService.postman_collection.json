@@ -15,23 +15,22 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/supply-location-service/get-closest?latitude=0.76794487088&longitude=1.6580627894",
+					"raw": "localhost:8080/get-closest?latitude=48.09179&longitude=-123.56685",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"supply-location-service",
 						"get-closest"
 					],
 					"query": [
 						{
 							"key": "latitude",
-							"value": "0.76794487088"
+							"value": "48.09179"
 						},
 						{
 							"key": "longitude",
-							"value": "1.6580627894"
+							"value": "-123.56685"
 						}
 					]
 				},
@@ -129,7 +128,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",\r\n    \"location\": {\r\n        \"latitude\": -0.83775804096,\r\n        \"longitude\": 0.872664626\r\n    },\r\n    \"on_the_ride\": false\r\n}",
+					"raw": "{\r\n    \"id\": \"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",\r\n    \"location\": {\r\n        \"latitude\": 64.96506,\r\n        \"longitude\": -24.17207\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -137,13 +136,12 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/supply-location-service/update-supply",
+					"raw": "localhost:8080/update-supply",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"supply-location-service",
 						"update-supply"
 					]
 				},
@@ -171,6 +169,36 @@
 							"key": "id",
 							"value": "fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",\r\n    \"location\": {\r\n        \"latitude\": -0.83775804096,\r\n        \"longitude\": 0.872664626\r\n    },\r\n    \"on_the_ride\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://toy-supply-location-service.herokuapp.com/supply-location-service/update-supply",
+					"protocol": "https",
+					"host": [
+						"toy-supply-location-service",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"supply-location-service",
+						"update-supply"
 					]
 				}
 			},

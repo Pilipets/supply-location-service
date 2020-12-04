@@ -25,6 +25,7 @@ public class KafkaConsumer {
       logger.debug(String.format("#### -> Kafka consumed message -> %s", message));
 
       final SupplyInstance ins = jsonMapper.readValue(message, SupplyInstance.class);
+      ins.getLocation().transformToRadians();
       impl.updateSupply(ins);
    }
 }

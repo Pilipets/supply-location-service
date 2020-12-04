@@ -26,7 +26,7 @@ import java.util.concurrent.ForkJoinPool;
  * filtered drivers in the intersected polygons.
  */
 @RestController()
-@RequestMapping(path="/supply-location-service")
+@RequestMapping()
 public class SupplyLocationController {
    private final SupplyLocationImpl impl;
 
@@ -65,6 +65,7 @@ public class SupplyLocationController {
    public ResponseEntity<Object> updateSupplyInstance(
          @RequestBody SupplyInstance ins) {
 
+      ins.getLocation().transformToRadians();
       impl.updateSupply(ins);
       return new ResponseEntity<>(HttpStatus.OK);
    }
@@ -73,9 +74,9 @@ public class SupplyLocationController {
    public ResponseEntity<Object> getSupplyLocation(
          @RequestParam(value = "id") UUID id) {
       GeoPoint location = impl.getSupplyLocation(id);
-      if (location == null) {
-         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-      }
+      if (location == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+      location.transformToDegrees();
       return new ResponseEntity<>(location, HttpStatus.OK);
    }
 }
