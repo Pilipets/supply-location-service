@@ -12,11 +12,11 @@
 	<groupId>uber-like-service</groupId>
 	<artifactId>SupplyLocationBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SupplyLocationBoot</name>
+	<name>supply-location-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>15</java.version>
 	</properties>
 
 	<dependencies>
