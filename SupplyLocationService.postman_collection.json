@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "GeoPoint get-closest",
+			"name": "Geopoint[] get-closest",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -28,10 +28,67 @@
 							"value": "-123.56685"
 						}
 					]
-				},
-				"description": "localhost:8080/supply_location/get_closest?geoPoint={\"radLat\":0.83775804096, \"radLon\":-1.0646508437}\r\nlocalhost:8080/supply_location/get_closest?geoPoint={\"radLat\":-0.523598775597, \"radLon\":1.4311699866}"
+				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Geopoint[] get-closest",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku_name}}/get-closest?latitude=48.09179&longitude=-123.56685",
+							"host": [
+								"{{heroku_name}}"
+							],
+							"path": [
+								"get-closest"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "48.09179"
+								},
+								{
+									"key": "longitude",
+									"value": "-123.56685"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Dec 2020 01:26:01 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",\n        \"location\": {\n            \"latitude\": 64.96506,\n            \"longitude\": -24.17207\n        }\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Geopoint[] get-in-radius",
@@ -70,25 +127,65 @@
 					]
 				}
 			},
-			"response": []
-		},
-		{
-			"name": "Dummy request",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{local_name}}/get-temp",
-					"host": [
-						"{{local_name}}"
+			"response": [
+				{
+					"name": "Geopoint[] get-in-radius",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku_name}}/get-closest-in-radius?latitude=48.09179&longitude=-123.56685",
+							"host": [
+								"{{heroku_name}}"
+							],
+							"path": [
+								"get-closest-in-radius"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "48.09179"
+								},
+								{
+									"key": "longitude",
+									"value": "-123.56685"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Dec 2020 01:25:55 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
 					],
-					"path": [
-						"get-temp"
-					]
-				},
-				"description": "Breaking request to trigger errorHandler."
-			},
-			"response": []
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",\n        \"location\": {\n            \"latitude\": 64.96506,\n            \"longitude\": -24.17207\n        }\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Void update supply instance with given",
@@ -127,7 +224,60 @@
 				},
 				"description": "1.instance={\"uuid\":\"a76ec673-5720-4cb6-a258-c7687f45b54a\",  \"location\": {\"latitude\":0.62831853072,\"longitude\":0.59341194568}}\r\n2.instance={\"uuid\":\"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",  \"location\": {\"latitude\":-0.83775804096,\"longitude\":0.872664626}}\r\n3.instance={\"uuid\":\"906f7567-4c3d-4d32-b4ec-4bff3e9bb435\",  \"location\": {\"latitude\":-0.41887902048,\"longitude\":-1.4835298642}}\r\n4.instance={\"uuid\":\"8e3bdea3-2d5a-4692-8d46-412c4e7d9eb1\",  \"location\": {\"latitude\":0.76794487088,\"longitude\":1.6580627894}}\r\n5.instance={\"uuid\":\"5463fd80-b4ae-42bd-b069-d5d2058a40d8\",  \"location\": {\"latitude\":0.68067840828,\"longitude\":2.51327412287}}"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Void update supply instance with given",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd\",\r\n    \"location\": {\r\n        \"latitude\": 64.96506,\r\n        \"longitude\": -24.17207\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku_name}}/update-supply",
+							"host": [
+								"{{heroku_name}}"
+							],
+							"path": [
+								"update-supply"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Dec 2020 01:25:51 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "SupplyInstance get-location by UUID",
@@ -150,14 +300,146 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "SupplyInstance get-location by UUID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku_name}}/get-location?id=fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd",
+							"host": [
+								"{{heroku_name}}"
+							],
+							"path": [
+								"get-location"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "fae12c26-3444-4ebe-9ca3-07cf9cfcbfcd"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Dec 2020 01:26:05 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"latitude\": 64.96506,\n    \"longitude\": -24.17207\n}"
+				}
+			]
+		},
+		{
+			"name": "Dummy request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{heroku_name}}/get-temp",
+					"host": [
+						"{{heroku_name}}"
+					],
+					"path": [
+						"get-temp"
+					]
+				},
+				"description": "Breaking request to trigger errorHandler."
+			},
+			"response": [
+				{
+					"name": "Dummy request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku_name}}/get-temp",
+							"host": [
+								"{{heroku_name}}"
+							],
+							"path": [
+								"get-temp"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Dec 2020 01:27:18 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2020-12-05T01:27:18.600+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"\",\n    \"path\": \"/get-temp\"\n}"
+				}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5102124a-de88-4051-bf5f-5d8bd1f843bd",
+				"id": "d0122c18-f999-4972-a494-77c4eeeb93b1",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -167,7 +449,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b9f4029a-4883-487e-9632-b823d9a4a105",
+				"id": "0ff8e469-9baa-46a3-8dcf-fa8eb7a03c36",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -177,14 +459,14 @@
 	],
 	"variable": [
 		{
-			"id": "d27a9ab7-80c4-44ba-83c8-5eb56fc19d80",
+			"id": "1a46ee4b-5c8f-4b5d-aa5c-5a0c80db30c6",
 			"key": "heroku_name",
 			"value": "https://toy-supply-location-service.herokuapp.com"
 		},
 		{
-			"id": "2918a119-0de4-462f-8c21-038d9f0e4eb1",
+			"id": "847ad8a0-461d-4743-bc20-93c740370172",
 			"key": "local_name",
-			"value": "localhost:8080/supply-location-service"
+			"value": "localhost:8080"
 		}
 	],
 	"protocolProfileBehavior": {}
