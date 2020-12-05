@@ -68,7 +68,7 @@ public class GeoAlgorithms {
          }
       }
 
-      if (resInstance != null) return List.of(resInstance);
+      if (resInstance != null) return List.of(new SupplyInstance(resInstance));
       return new ArrayList<>();
    }
 
@@ -105,7 +105,7 @@ public class GeoAlgorithms {
       while (iterator.hasNext()) {
          SupplyInstance entry = iterator.next().getValue();
          if (isInsidePred.test(entry)) {
-            res.add(entry);
+            res.add(new SupplyInstance(entry));
          }
       }
 

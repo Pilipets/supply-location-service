@@ -9,6 +9,11 @@ public class SupplyInstance {
    public SupplyInstance() {
    }
 
+   public SupplyInstance(SupplyInstance other) {
+      id = other.id;
+      location = new GeoPoint(other.location);
+   }
+
    public UUID getId() {
       return id;
    }

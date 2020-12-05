@@ -7,6 +7,11 @@ public class GeoPoint {
 
    }
 
+   public GeoPoint(GeoPoint other) {
+      latitude = other.latitude;
+      longitude = other.longitude;
+   }
+
    /**
     * @param latitude the latitude, in radians.
     * @param longitude the longitude, in radians.

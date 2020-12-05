@@ -1,9 +1,5 @@
 package uber.location_service.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -76,6 +72,7 @@ public class SupplyLocationController {
       GeoPoint location = impl.getSupplyLocation(id);
       if (location == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
+      location = new GeoPoint(location);
       location.transformToDegrees();
       return new ResponseEntity<>(location, HttpStatus.OK);
    }
