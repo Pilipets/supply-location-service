@@ -5,7 +5,6 @@ import uber.location_service.structures.SupplyInstance;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AlgoInterface {
@@ -14,13 +13,13 @@ public class AlgoInterface {
    private final static double minSearchDistance = 10; // km
 
    public List<SupplyInstance> getClosestSupply(
-         ConcurrentHashMap<UUID, SupplyInstance> lhm, GeoPoint location) {
+         ConcurrentHashMap<String, SupplyInstance> lhm, GeoPoint location) {
       return GeoAlgorithms.getClosest(
             lhm.entrySet().iterator(), earthRadius, location);
    }
 
    public List<SupplyInstance> getRadiusSupply(
-         ConcurrentHashMap<UUID, SupplyInstance> lhm, GeoPoint location) {
+         ConcurrentHashMap<String, SupplyInstance> lhm, GeoPoint location) {
       List<SupplyInstance> radiusSupplySet = new ArrayList<>();
       double curDistance = minSearchDistance;
 

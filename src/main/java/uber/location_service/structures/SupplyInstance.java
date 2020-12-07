@@ -1,9 +1,7 @@
 package uber.location_service.structures;
 
-import java.util.UUID;
-
 public class SupplyInstance {
-   private UUID id;
+   private String id;
    private GeoPoint location;
 
    public SupplyInstance() {
@@ -14,7 +12,7 @@ public class SupplyInstance {
       location = new GeoPoint(other.location);
    }
 
-   public UUID getId() {
+   public String getId() {
       return id;
    }
 

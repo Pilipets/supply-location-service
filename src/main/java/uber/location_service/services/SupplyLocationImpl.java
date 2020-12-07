@@ -6,13 +6,12 @@ import uber.location_service.structures.GeoPoint;
 import uber.location_service.structures.SupplyInstance;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class SupplyLocationImpl {
    private final AlgoInterface algoInterface;
-   protected ConcurrentHashMap<UUID, SupplyInstance> lhm;
+   protected ConcurrentHashMap<String, SupplyInstance> lhm;
 
    public SupplyLocationImpl() {
       this.algoInterface = new AlgoInterface();
@@ -35,7 +34,7 @@ public class SupplyLocationImpl {
       return res;
    }
 
-   public GeoPoint  getSupplyLocation(UUID id) {
+   public GeoPoint  getSupplyLocation(String id) {
       SupplyInstance ins = lhm.getOrDefault(id, null);
       if (ins == null) {
          return null;

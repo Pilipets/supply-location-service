@@ -10,7 +10,6 @@ import uber.location_service.structures.GeoPoint;
 import uber.location_service.structures.SupplyInstance;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.ForkJoinPool;
 
 /**
@@ -68,7 +67,7 @@ public class SupplyLocationController {
 
    @GetMapping(path="/get-location")
    public ResponseEntity<Object> getSupplyLocation(
-         @RequestParam(value = "id") UUID id) {
+         @RequestParam(value = "id") String id) {
       GeoPoint location = impl.getSupplyLocation(id);
       if (location == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

@@ -54,7 +54,7 @@ public class GeoAlgorithms {
 
 
    public static List<SupplyInstance> getClosest(
-         final Iterator<Map.Entry<UUID, SupplyInstance>> iterator, final double radius,
+         final Iterator<Map.Entry<String, SupplyInstance>> iterator, final double radius,
          final GeoPoint location) {
       double resDistance = Double.MAX_VALUE;
       SupplyInstance resInstance = null;
@@ -73,7 +73,7 @@ public class GeoAlgorithms {
    }
 
    public static List<SupplyInstance> findPlacesWithinDistance(
-         final Iterator<Map.Entry<UUID, SupplyInstance>> iterator, final double radius,
+         final Iterator<Map.Entry<String, SupplyInstance>> iterator, final double radius,
          final GeoPoint location, final double distance) {
 
       final GeoPoint[] boundCoords = boundingCoordinates(location, distance, radius);
