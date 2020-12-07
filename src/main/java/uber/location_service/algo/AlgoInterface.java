@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AlgoInterface {
    private final static double earthRadius = 6371.01; //km
-   private final static double maxSearchDistance = 15000; // km
+   private final static double maxSearchDistance = 30000; // km
    private final static double minSearchDistance = 10; // km
 
    public List<SupplyInstance> getClosestSupply(
