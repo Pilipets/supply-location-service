@@ -69,7 +69,7 @@ public class SupplyLocationController {
    public ResponseEntity<Object> getSupplyLocation(
          @RequestParam(value = "id") String id) {
       GeoPoint location = impl.getSupplyLocation(id);
-      if (location == null) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+      if (location == null) return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
 
       location = new GeoPoint(location);
       location.transformToDegrees();
