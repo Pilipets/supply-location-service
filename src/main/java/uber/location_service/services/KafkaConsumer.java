@@ -9,18 +9,18 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import uber.location_service.structures.SupplyInstance;
 
-//@Service
+@Service
 public class KafkaConsumer {
    private final Logger logger = LoggerFactory.getLogger(KafkaConsumer.class);
    private final SupplyLocationImpl impl;
    private final ObjectMapper jsonMapper = new ObjectMapper();
 
-   //@Autowired
+   @Autowired
    public KafkaConsumer(final SupplyLocationImpl impl) {
       this.impl = impl;
    }
 
-   //@KafkaListener(topics = "supply-location", groupId = "group_id")
+   @KafkaListener(topics = "supply-location", groupId = "group_id")
    public void consume(String message) throws JsonProcessingException {
       logger.debug(String.format("#### -> Kafka consumed message -> %s", message));
 
